@@ -1,13 +1,13 @@
 #ifndef __INPUT_H__
 #define __INPUT_H__
 
+#define N (20)
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-#include <math.h>
+#define ROW_STEP (sizeof(uint8_t) * N)
+#define COL_STEP (1)
+#define DIAG_STEP_DOWN (COL_STEP + ROW_STEP)
+#define DIAG_STEP_UP   (COL_STEP - ROW_STEP)
 
-#define N 20
 
 
 /*Since this is a one time test I just copy pasted the string
