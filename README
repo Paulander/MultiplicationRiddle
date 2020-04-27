@@ -1,30 +1,45 @@
 README
 
 Description:
-Small program to find maximum product of four consecutive numbers (<100) in a NxN matrix. By consecutive I mean that they are either in a row on the same line, column or one of the (main) diagonals.
+Small program to find maximum product of four consecutive numbers (<100) in a NxN matrix. By
+consecutive I mean that they are either in a row on the same line, column or one of the (main)
+diagonals.
 
 Solution/Optimizations:
 
-The brute-force version is very straight forward; make a 2D-array, loop through row wise, column wise, and diagonally. Multiply 4 numbers at a time and compare to the largest. Save the biggest.
+The brute-force version is very straight forward; make a 2D-array, loop through row wise,
+column wise, and diagonally. Multiply 4 numbers at a time and compare to the largest. Save the
+biggest.
 
-One small trick (that cost some extra code as it introduced possible divide by 0) is that instead of going through ALL numbers, I identified that the consecutive products abcd and bcde only differ in one factor (a and e). Since I am using intergers and we know for a fact that a is a factor in the product abcd, we can safely divide abcd/a, and just multiply with e to get bcde.
+One small trick (that cost some extra code as it introduced possible divide by 0) is that
+instead of going through ALL numbers, I identified that the consecutive products abcd and bcde
+only differ in one factor (a and e). Since I am using intergers and we know for a fact that a
+is a factor in the product abcd, we can safely divide abcd/a, and just multiply with e to get
+bcde.
 
-Furthermore when encountering a 0 I skip ahead 4 steps from that 0, as we know all products in that range will be 0 anyway. Here we need to check so that we didn't skip over an other zero though and accidentally jump to far. So I made a helper function that located latest 0.
 
-
+Furthermore when encountering a 0 I skip ahead 4 steps from that 0, as we know all products in
+that range will be 0 anyway. Here we need to check so that we didn't skip over an other zero
+though and accidentally jump to far. So I made a helper function that located latest 0.
 
 
 
 TODO/Outlook:
 
-- For handling general input (it was originally a string) I would write a small parser program in C++ or Python, also (possibly) handling different sized inputs.
+- For handling general input (it was originally a string) I would write a small parser program
+in C++ or Python, also (possibly) handling different sized inputs.
+
+- Maybe save the numbers that resulted in the largest product, and then at the end print the
+whole matrix with these numbers in a different color.
 
 - I'd like to add a (c-)makefile.
 I built with gcc --std=c99
 
-- Further optimization
+- Further optimization, e.g. put row and col in the same loop.
 
-- Also I might want to pick the handling of the row/col etc outside of the max_value function. It'd be cleaner, more readable, code to prepare an input vector of length N with the appropriate values and then just step through it. Less cluttered code in the main function.
+- Also I might want to pick the handling of the row/col etc outside of the max_value function.
+It'd be cleaner, more readable, code to prepare an input vector of length N with the
+appropriate values and then just step through it. Less cluttered code in the main function.
 
 
 Oskar Paulander 2020-04.
